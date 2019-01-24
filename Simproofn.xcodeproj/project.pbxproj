@@ -25,6 +25,8 @@
 		99C763C521F7D652000188F1 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C763C421F7D652000188F1 /* LoginButton.swift */; };
 		99C763C821F84905000188F1 /* drawer.json in Resources */ = {isa = PBXBuildFile; fileRef = 99C763C621F84905000188F1 /* drawer.json */; };
 		99C763C921F84905000188F1 /* selection.json in Resources */ = {isa = PBXBuildFile; fileRef = 99C763C721F84905000188F1 /* selection.json */; };
+		99C763CD21F9BF9D000188F1 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C763CC21F9BF9D000188F1 /* HeaderView.swift */; };
+		99C763CF21F9C562000188F1 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C763CE21F9C562000188F1 /* InboxViewController.swift */; };
 		D6C089695C96A7C7F4454107 /* Pods_SimproofnUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B04D325BFEACD5702AD48AD /* Pods_SimproofnUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,8 @@
 		99C763C421F7D652000188F1 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		99C763C621F84905000188F1 /* drawer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = drawer.json; sourceTree = "<group>"; };
 		99C763C721F84905000188F1 /* selection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = selection.json; sourceTree = "<group>"; };
+		99C763CC21F9BF9D000188F1 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		99C763CE21F9C562000188F1 /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		9A28ACA797345632998B6F28 /* Pods-Simproofn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simproofn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Simproofn/Pods-Simproofn.debug.xcconfig"; sourceTree = "<group>"; };
 		9DD427D9B0419B436CBD6775 /* Pods-SimproofnTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimproofnTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimproofnTests/Pods-SimproofnTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1A83EF4ED924461230C3385 /* Pods-SimproofnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimproofnUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimproofnUITests/Pods-SimproofnUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				994B94CE21F7B07D00E6A03B /* Info.plist */,
 				99C763B321F7BECB000188F1 /* HomeViewController.swift */,
 				99C763B521F7C196000188F1 /* LoginViewController.swift */,
+				99C763CE21F9C562000188F1 /* InboxViewController.swift */,
 			);
 			path = Simproofn;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				99C763B721F7C3BF000188F1 /* GradientView.swift */,
 				99C763C221F7CF4F000188F1 /* LoginTextField.swift */,
 				99C763C421F7D652000188F1 /* LoginButton.swift */,
+				99C763CC21F9BF9D000188F1 /* HeaderView.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -450,9 +456,11 @@
 				994B94C521F7B07B00E6A03B /* ViewController.swift in Sources */,
 				99C763C521F7D652000188F1 /* LoginButton.swift in Sources */,
 				99C763B821F7C3BF000188F1 /* GradientView.swift in Sources */,
+				99C763CF21F9C562000188F1 /* InboxViewController.swift in Sources */,
 				99C763C321F7CF4F000188F1 /* LoginTextField.swift in Sources */,
 				994B94C321F7B07B00E6A03B /* AppDelegate.swift in Sources */,
 				99C763B421F7BECB000188F1 /* HomeViewController.swift in Sources */,
+				99C763CD21F9BF9D000188F1 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
