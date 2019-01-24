@@ -1,0 +1,6 @@
+framework module Pods_SimproofnUITests {
+  umbrella header "Pods-SimproofnUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
