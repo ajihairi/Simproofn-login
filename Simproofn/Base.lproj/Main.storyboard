@@ -60,7 +60,7 @@
         <!--Login View Controller-->
         <scene sceneID="3Ub-8g-vQz">
             <objects>
-                <viewController id="DaJ-g4-Rxc" customClass="LoginViewController" customModule="Simproofn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" id="DaJ-g4-Rxc" customClass="LoginViewController" customModule="Simproofn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PJQ-XU-QfZ" customClass="GradientView" customModule="Simproofn" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

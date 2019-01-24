@@ -17,12 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        let isLoggedIn = false;
+        let userLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn");
+        var idRoot = "loginView";
 //        
-//        if (isLoggedIn) {
-//            
-//        } else {
-//            
-//        }
+        if (userLoggedIn) {
+//         langsung ke screen inbox / home
+            idRoot = "homeView"
+            
+        }
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: idRoot) as UIViewController
+        window!.rootViewController = homeViewController
         return true
     }
 
