@@ -9,5 +9,8 @@
 import UIKit
 
 class ProofnNavigationItem: UINavigationItem {
+    override func awakeFromNib() {
+        
+    }
 
 }

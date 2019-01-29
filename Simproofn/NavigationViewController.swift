@@ -29,6 +29,7 @@ class NavigationViewController: UINavigationController {
         }
 
         // Do any additional setup after loading the view.
+//        self.navigationItem.leftBarButtonItem?.title = "Inbox"
     }
     
     func getImageFrom(gradientLayer:CAGradientLayer) -> UIImage? {

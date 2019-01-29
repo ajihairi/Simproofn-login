@@ -12,6 +12,7 @@ class InboxViewController: UITableViewController {
 
     
     var messages = [Messages]()
+    var isNoSelectMode = true
     
     
     override func viewDidLoad() {
@@ -23,12 +24,12 @@ class InboxViewController: UITableViewController {
         longPressGesture.minimumPressDuration = 0.5 // 1 second press
         longPressGesture.delegate = self as? UIGestureRecognizerDelegate
         self.tableView.addGestureRecognizer(longPressGesture)
-        composeButton.isEnabled = false
-//        navigationItem.leftBarButtonItem = editButtonItem
-
         
+            let button = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButton(_:)))
+            self.navigationItem.rightBarButtonItem = button
+            self.navigationItem.rightBarButtonItem?.tintColor = .white
     }
-    var isNoSelectMode = true
+    
     @objc func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
         
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
@@ -38,12 +39,18 @@ class InboxViewController: UITableViewController {
                 print("\(messages.content)")
                 self.tableView.allowsMultipleSelection = true
                 self.tableView.allowsMultipleSelectionDuringEditing = true
-                composeButton.isEnabled = true
+//                composeButton.isEnabled = true
                 isNoSelectMode = false
+                let button = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(composeButton(_:)))
+                self.navigationItem.rightBarButtonItem = button
+                self.navigationItem.rightBarButtonItem?.tintColor = .white
+                
+                
             }
             
         }
     }
+    
 
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -85,29 +92,35 @@ class InboxViewController: UITableViewController {
 
 
 
-    @IBAction func composeButton(_ sender: UIBarButtonItem) {
+    @objc func composeButton(_ sender: UIBarButtonItem) {
         if (self.tableView.allowsMultipleSelection == true ||
             self.tableView.allowsMultipleSelectionDuringEditing == true
             ) {
             self.tableView.allowsMultipleSelection = false
             self.tableView.allowsMultipleSelectionDuringEditing = false
-            composeButton.isEnabled = false
             isNoSelectMode = !isNoSelectMode
             
+            let button = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButton(_:)))
+            self.navigationItem.rightBarButtonItem = button
+            self.navigationItem.rightBarButtonItem?.tintColor = .white
         }
     }
     
     
-    @IBOutlet weak var composeButton: UIBarButtonItem!
-    @IBAction func logoutButton(_ sender: Any) {
-        var isLoggedIn = false;
-                let datas = UserDefaults.standard;
-                isLoggedIn = false
-                datas.set(isLoggedIn, forKey: "isLoggedIn")
+//    @IBOutlet weak var composeButton: UIBarButtonItem!
+    @objc func logoutButton(_ sender: UIBarButtonItem) {
         
-                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let loginViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as UIViewController
-                UIApplication.shared.keyWindow?.rootViewController = loginViewController
+        if navigationItem.rightBarButtonItem?.title != "cancel" {
+            var isLoggedIn = false;
+            let datas = UserDefaults.standard;
+            isLoggedIn = false
+            datas.set(isLoggedIn, forKey: "isLoggedIn")
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as UIViewController
+            UIApplication.shared.keyWindow?.rootViewController = loginViewController
+            
+        }
     }
     
     
@@ -131,9 +144,6 @@ class InboxViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (self.tableView.allowsMultipleSelection == false){
-            print("ini loh")
-        }
         
         let cellIdentifier = "InboxTableViewCell"
         
@@ -168,8 +178,6 @@ class InboxViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-    
-    
     
     
     private func loadSampleMessages() {
