@@ -17,20 +17,17 @@ class InboxTableViewCell: UITableViewCell {
         avatarImageView.setRounded()
         
     }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = .none
-    }
-    
-
-    
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var recievedLabel: UILabel!
     @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
