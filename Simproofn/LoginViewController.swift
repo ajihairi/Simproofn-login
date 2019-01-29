@@ -49,8 +49,6 @@ class LoginViewController: UIViewController {
         if (username == idChecker){
             if (password == passChecker) {
                 self.performSegue(withIdentifier: "homeView", sender: self)
-//                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                let initViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "homeView") as UIViewController
                 isLoggedIn = true
                 datas.set(isLoggedIn, forKey: "isLoggedIn")
 //                self.present(initViewController, animated: true, completion: nil)

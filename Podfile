@@ -7,6 +7,7 @@ target 'Simproofn' do
 
   # Pods for Simproofn
   pod 'IHKeyboardAvoiding'
+#  pod 'DGElasticPullToRefresh'
 
   target 'SimproofnTests' do
     inherit! :search_paths

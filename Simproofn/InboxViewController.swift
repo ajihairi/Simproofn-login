@@ -10,16 +10,95 @@ import UIKit
 
 class InboxViewController: UITableViewController {
 
+    
+    var messages = [Messages]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        loadSampleMessages()
+        
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(InboxViewController.longPress(_:)))
+        longPressGesture.minimumPressDuration = 0.5 // 1 second press
+        longPressGesture.delegate = self as? UIGestureRecognizerDelegate
+        self.tableView.addGestureRecognizer(longPressGesture)
+        composeButton.isEnabled = false
+//        navigationItem.leftBarButtonItem = editButtonItem
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+    }
+    var isNoSelectMode = true
+    @objc func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            let touchPoint = longPressGestureRecognizer.location(in: self.tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                let messages = self.messages[indexPath.row]
+                print("\(messages.content)")
+                self.tableView.allowsMultipleSelection = true
+                self.tableView.allowsMultipleSelectionDuringEditing = true
+                composeButton.isEnabled = true
+                isNoSelectMode = false
+            }
+            
+        }
     }
 
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return isNoSelectMode
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        if (self.tableView.allowsMultipleSelection == false) {
+            
+            
+            if (segue.identifier == "TopicListSegue") {
+                guard let topicListsTableViewController = segue.destination as? TopicListTableViewController
+                    else
+                {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                
+                guard let selectedMessageCell = sender as? InboxTableViewCell else {
+                    fatalError("Unexpected sender: \(String(describing: sender))")
+                }
+                
+                guard let indexPath = tableView.indexPath(for: selectedMessageCell) else {
+                    fatalError("The selected cell is not being displayed by the table")
+                }
+                
+                let selectedMessage = messages[indexPath.row]
+                topicListsTableViewController.message = selectedMessage
+                print(selectedMessage)
+            } else {
+                fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+            }
+            
+        }
+        
+    }
+
+
+
+    @IBAction func composeButton(_ sender: UIBarButtonItem) {
+        if (self.tableView.allowsMultipleSelection == true ||
+            self.tableView.allowsMultipleSelectionDuringEditing == true
+            ) {
+            self.tableView.allowsMultipleSelection = false
+            self.tableView.allowsMultipleSelectionDuringEditing = false
+            composeButton.isEnabled = false
+            isNoSelectMode = !isNoSelectMode
+            
+        }
+    }
+    
+    
+    @IBOutlet weak var composeButton: UIBarButtonItem!
     @IBAction func logoutButton(_ sender: Any) {
         var isLoggedIn = false;
                 let datas = UserDefaults.standard;
@@ -30,71 +109,83 @@ class InboxViewController: UITableViewController {
                 let loginViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as UIViewController
                 UIApplication.shared.keyWindow?.rootViewController = loginViewController
     }
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
+    
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var cellHeight:CGFloat = CGFloat()
+        
+        if indexPath.row % 2 == 0 {
+            cellHeight = 70
+        }
+        else if indexPath.row % 2 != 0 {
+            cellHeight = 70
+        }
+        return cellHeight
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        if (self.tableView.allowsMultipleSelection == false){
+            print("ini loh")
+        }
+        
+        let cellIdentifier = "InboxTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? InboxTableViewCell else {
+            fatalError("The dequeued cell is not an instance of InboxTableViewCell")
+        }
+        
+        let message = messages[indexPath.row]
+        
+        cell.nameLabel.text = message.name
+        cell.avatarImageView.image = message.avatar
+        cell.topicLabel.text = message.subject
+        cell.recievedLabel.text = message.recieved
+        cell.contentLabel.text = message.content
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
+    
+    //editing
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            messages.remove(at: indexPath.row)
+            //saveMessages()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    
+    
+    
+    private func loadSampleMessages() {
+        let avatar1 = UIImage(named: "avatars")
+        
+        
+        guard let messages1 = Messages(name: "ujang", avatar: avatar1, subject: "ini Subject", recieved: "Today", content: "ini Content") else {
+            fatalError("unable to instantiate Message1")
+        }
+        guard let messages2 = Messages(name: "Maman", avatar: avatar1, subject: "ini Subject", recieved: "Today", content: "ini content asdasdas da sdasda sdasd") else {
+            fatalError("unable to instantiate Message1")
+        }
+        guard let messages3 = Messages(name: "Asep", avatar: avatar1, subject: "ini Subject", recieved: "Today", content: "ini content asdasdas da sdasda sdasd") else {
+            fatalError("unable to instantiate Message1")
+        }
+        
+        messages += [messages1, messages2, messages3,messages1, messages2, messages3, messages1, messages2, messages3]
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
