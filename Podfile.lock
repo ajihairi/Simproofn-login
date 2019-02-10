@@ -1,16 +1,20 @@
 PODS:
+  - EzPopup (1.0)
   - IHKeyboardAvoiding (4.6)
 
 DEPENDENCIES:
+  - EzPopup
   - IHKeyboardAvoiding
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - EzPopup
     - IHKeyboardAvoiding
 
 SPEC CHECKSUMS:
+  EzPopup: 8ab951717736197e57b8f9973816fa2601cd59c5
   IHKeyboardAvoiding: 2a664fdb5f964359fa7ec8fc5c9aebb447583ff8
 
-PODFILE CHECKSUM: bb90cac3b423668f98ab2772975125ca6d44bac6
+PODFILE CHECKSUM: 9b334b76067ccf72374ff0dd7c71c600edc8a70d
 
 COCOAPODS: 1.5.3

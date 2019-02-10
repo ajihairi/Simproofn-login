@@ -162,6 +162,7 @@
         <!--Inbox View Controller-->
         <scene sceneID="nqd-IX-iv0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VcR-x1-sgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Swn-sn-q0e" customClass="InboxViewController" customModule="Simproofn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="10" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xVR-LD-Y8h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
@@ -260,7 +261,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VcR-x1-sgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5336" y="280"/>
         </scene>
@@ -350,7 +350,7 @@
         <!--Chat Table View Controller-->
         <scene sceneID="izv-9F-RFf">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="Tf9-UT-xSV" customClass="ChatTableViewController" customModule="Simproofn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="chatView" id="Tf9-UT-xSV" customClass="ChatTableViewController" customModule="Simproofn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AYi-XD-pHi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -370,20 +370,7 @@
                             <outlet property="delegate" destination="Tf9-UT-xSV" id="P1j-jG-jQD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1a7-3n-Olu">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Pop" style="plain" id="4uO-hK-l4j">
-                                <connections>
-                                    <action selector="popUpButton:" destination="Tf9-UT-xSV" id="1zy-9y-llT"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="More" style="plain" id="2S0-mh-kmF">
-                                <connections>
-                                    <action selector="moreButton:" destination="Tf9-UT-xSV" id="VcW-M7-wOe"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="1a7-3n-Olu"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="yB2-ft-Go2">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -492,6 +479,7 @@
         <!--Navigation View Controller-->
         <scene sceneID="9SW-sq-rAb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aq1-E7-dNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="jmw-4e-Hs6" customClass="NavigationViewController" customModule="Simproofn" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" systemItem="contacts" id="Rbp-YO-g9q"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CL1-Pb-R3B">
@@ -502,7 +490,6 @@
                         <segue destination="6hD-Bm-BQC" kind="relationship" relationship="rootViewController" id="t7P-df-mKi"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aq1-E7-dNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4359.375" y="1013.0281690140845"/>
         </scene>
