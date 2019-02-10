@@ -8,6 +8,7 @@
 
 import UIKit
 import EzPopup
+import IHKeyboardAvoiding
 
 class ChatTableViewController: UITableViewController {
     
@@ -75,6 +76,7 @@ class ChatTableViewController: UITableViewController {
         popupModal.canTapOutsideToDismiss = false
         
         present(popupModal, animated: true, completion: nil)
+        KeyboardAvoiding.avoidingView = popupModal.view
         
         
         
