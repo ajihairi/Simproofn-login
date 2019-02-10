@@ -8,28 +8,29 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func logoutButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-        
-        var isLoggedIn = false;
-        let datas = UserDefaults.standard;
-        isLoggedIn = false
-        datas.set(isLoggedIn, forKey: "isLoggedIn")
-        
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as UIViewController
-        UIApplication.shared.keyWindow?.rootViewController = loginViewController
-        
-        
-    }
+    
+//    @IBAction func logoutButton(_ sender: Any) {
+////        self.dismiss(animated: true, completion: nil)
+//        
+//        var isLoggedIn = false;
+//        let datas = UserDefaults.standard;
+//        isLoggedIn = false
+//        datas.set(isLoggedIn, forKey: "isLoggedIn")
+//        
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let loginViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "loginView") as UIViewController
+//        UIApplication.shared.keyWindow?.rootViewController = loginViewController
+//        
+//        
+//    }
     
     /*
     // MARK: - Navigation
