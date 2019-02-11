@@ -29,6 +29,7 @@
 		99AC45C72210D8400065AF5A /* Components.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99AC45C62210D8400065AF5A /* Components.storyboard */; };
 		99AC45C92210DD0A0065AF5A /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AC45C82210DD0A0065AF5A /* PopUpViewController.swift */; };
 		99AC45CB2210E4D80065AF5A /* UIView+UIBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AC45CA2210E4D80065AF5A /* UIView+UIBezierPath.swift */; };
+		99AC45CD221156A80065AF5A /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99AC45CC221156A80065AF5A /* Groups.storyboard */; };
 		99C763B421F7BECB000188F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C763B321F7BECB000188F1 /* HomeViewController.swift */; };
 		99C763B621F7C196000188F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C763B521F7C196000188F1 /* LoginViewController.swift */; };
 		99C763B821F7C3BF000188F1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C763B721F7C3BF000188F1 /* GradientView.swift */; };
@@ -92,6 +93,7 @@
 		99AC45C62210D8400065AF5A /* Components.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Components.storyboard; sourceTree = "<group>"; };
 		99AC45C82210DD0A0065AF5A /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		99AC45CA2210E4D80065AF5A /* UIView+UIBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+UIBezierPath.swift"; sourceTree = "<group>"; };
+		99AC45CC221156A80065AF5A /* Groups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
 		99C763B321F7BECB000188F1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		99C763B521F7C196000188F1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		99C763B721F7C3BF000188F1 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				995B1D7121FEC73A000C068A /* InboxTableViewCell.swift */,
 				995B1D7A21FF12ED000C068A /* TopicListTableViewCell.swift */,
 				994B94C621F7B07B00E6A03B /* Main.storyboard */,
+				99AC45CC221156A80065AF5A /* Groups.storyboard */,
 				99AC45C22210C0EF0065AF5A /* BottomSheetViewController.swift */,
 				99AC45C32210C0EF0065AF5A /* BottomSheetViewController.xib */,
 				99AC45C82210DD0A0065AF5A /* PopUpViewController.swift */,
@@ -377,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99AC45CD221156A80065AF5A /* Groups.storyboard in Resources */,
 				994B94CD21F7B07D00E6A03B /* LaunchScreen.storyboard in Resources */,
 				994B94CA21F7B07D00E6A03B /* Assets.xcassets in Resources */,
 				99C763C021F7C886000188F1 /* proofn.ttf in Resources */,
